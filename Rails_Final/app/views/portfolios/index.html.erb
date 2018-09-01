@@ -1,5 +1,4 @@
 
-
 <body class="bg-white">
   <div class="container">
     <div class="card card-login mx-auto mt-5">
@@ -17,25 +16,24 @@
         <i class="text-center fa fa-table"></i>
           <tr>
             <th>Symbol</th>
-            <th>Security Type</th>
-            <th>% Market</th>
             <th>Price</th>
+            <th>Size</th>
           </tr>
         </thead>
              <tbody>
+                 <%@body.each do |b|%>
+                 <tr>
+                   <td><%=b["symbol"]%></td>
+                   <td><%=b["price"]%></td>
+                   <td><%=b["size"]%></td>
+                 </tr>
+                   <%end%>
              </tbody>
     </table>
 
   </div>
   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
     <h1>Listing Portfolios</h1>
-    <div>
-      <% @body_hash.each do |body|%>
-      <li>
-        <%=body["symbol"]%>
-      </li>
-      <%end%>
-    </div>
     <table>
       <thead>
         <tr>

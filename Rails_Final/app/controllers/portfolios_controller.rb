@@ -6,6 +6,10 @@ class PortfoliosController < ApplicationController
   # GET /portfolios.json
   def index
     @portfolios = Portfolio.all
+    begin
+      @stocks = Faraday.get 'https://api.iextrading.com/1.0/tops/last'
+      @body = JSON.parse(@stocks.body)
+    end
   end
 
   # GET /portfolios/1
@@ -61,11 +65,7 @@ class PortfoliosController < ApplicationController
       format.json { head :no_content }
     end
   end
-  def iex
-    @resp = Faraday.get 'https://api.iextrading.com/1.0/tops'
-    @body_hash = JSON.parse(@resp.body)
-    render 'index'
-  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_portfolio
