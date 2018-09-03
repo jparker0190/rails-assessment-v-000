@@ -16,16 +16,20 @@
         <i class="text-center fa fa-table"></i>
           <tr>
             <th>Symbol</th>
+            <th>Sector</th>
+            <th>High</th>
+            <th>Low</th>
             <th>Price</th>
-            <th>Size</th>
           </tr>
         </thead>
              <tbody>
                  <%@body.each do |b|%>
                  <tr>
                    <td><%=b["symbol"]%></td>
-                   <td><%=b["price"]%></td>
-                   <td><%=b["size"]%></td>
+                   <td><%=b["sector"]%></td>
+                   <td><%=b["high"]%></td>
+                   <td><%=b["low"]%></td>
+                   <td><%=b["latestPrice"]%></td>
                  </tr>
                    <%end%>
              </tbody>
@@ -47,7 +51,7 @@
         <% @portfolios.each do |portfolio| %>
           <tr>
 
-            <td><%= portfolio.ticker %></td>
+            <td><%= portfolio.security %></td>
             <td><%= portfolio.amount %></td>
             <td><%= link_to 'Show', portfolio %></td>
             <td><%= link_to 'Edit', edit_portfolio_path(portfolio) %></td>
