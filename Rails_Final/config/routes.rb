@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'user/show'
+
   root 'home#index'
   resources :portfolios
   devise_for :users, controllers: {registrations: "registrations"}
