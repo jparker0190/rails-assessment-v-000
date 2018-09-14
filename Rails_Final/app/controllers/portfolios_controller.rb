@@ -6,10 +6,6 @@ class PortfoliosController < ApplicationController
   # GET /portfolios.json
   def index
     @portfolios = Portfolio.all
-    begin
-      @stocks = Faraday.get 'https://api.iextrading.com/1.0/stock/market/list/infocus'
-      @body = JSON.parse(@stocks.body)
-    end
   end
 
   # GET /portfolios/1
@@ -31,31 +27,16 @@ class PortfoliosController < ApplicationController
   # POST /portfolios
   # POST /portfolios.json
   def create
-    @portfolio = Portfolio.new(portfolio_params)
-
-    respond_to do |format|
-      if @portfolio.save
-        format.html { redirect_to @portfolio, notice: 'Portfolio was successfully created.' }
-        format.json { render :show, status: :created, location: @portfolio }
-      else
-        format.html { render :new }
-        format.json { render json: @portfolio.errors, status: :unprocessable_entity }
-      end
-    end
+    @portfolio = Portfolio.create(portfolio_params)
+    @portfolio.save
+    redirect_to portfolio_path(@portfolio)
   end
 
   # PATCH/PUT /portfolios/1
   # PATCH/PUT /portfolios/1.json
   def update
-    respond_to do |format|
-      if @portfolio.update(portfolio_params)
-        format.html { redirect_to @portfolio, notice: 'Portfolio was successfully updated.' }
-        format.json { render :show, status: :ok, location: @portfolio }
-      else
-        format.html { render :edit }
-        format.json { render json: @portfolio.errors, status: :unprocessable_entity }
-      end
-    end
+    @portfolio.update(portfolio_params)
+    redirect_to portfolio_path(@portfolio)
   end
 
   # DELETE /portfolios/1

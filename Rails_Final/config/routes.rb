@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get 'user/show'
 
   root 'home#index'
   resources :portfolios
+  resources :stocks
   devise_for :users, controllers: {registrations: "registrations"}
 
 
