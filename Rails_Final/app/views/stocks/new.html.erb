@@ -1,14 +1,14 @@
 <center>
-<div class="container">
-  <div class="card-body">
-    <ol class="breadcrumb">
-              <li class="breadcrumb-item">
-                <%= link_to 'Home', portfolios_path %>
-              </li>
-              <li class="breadcrumb-item active">Create</li>
-            </ol>
-    <%= render 'form', stock: Stock.new%>
+  <div class="container">
+    <div class="card-body">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <%= link_to 'Home', portfolios_path %>
+        </li>
+        <li class="breadcrumb-item active">Create</li>
+      </ol>
+      <%= render 'form'%>
 
+    </div>
   </div>
-</div>
 </center>

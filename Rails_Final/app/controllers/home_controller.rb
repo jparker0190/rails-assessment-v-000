@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+
+  #action for displaying the portfolios home page once the user successfully login in
   def index
     if user_signed_in?
       redirect_to portfolios_path

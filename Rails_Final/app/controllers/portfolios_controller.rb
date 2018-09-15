@@ -4,63 +4,58 @@ class PortfoliosController < ApplicationController
 
   # GET /portfolios
   # GET /portfolios.json
-  def index
-      @portfolio = Portfolio.all
-  end
+    def index
+        @portfolio = Portfolio.all
+    end
 
   # GET /portfolios/1
   # GET /portfolios/1.json
-  def show
-    @portfolio = Portfolio.find(params[:id])
-  end
+    def show
+      @portfolio = Portfolio.find(params[:id])
+    end
 
   # GET /portfolios/new
-  def new
-    @portfolio = Portfolio.new
-  end
+    def new
+      @portfolio = Portfolio.new
+    end
 
   # GET /portfolios/1/edit
-  def edit
-    redirect_if_not_logged_in
-    @error_message = params[:error]
-    @portfolio = Portfolio.find(params[:id])
-    if @portfolio.user == current_user
-     erb :'portfolios/edit'
-   else
-     redirect to '/portfolios'
-   end
-  end
+    def edit
+      @portfolio.update(portfolio_params)
+    end
 
   # POST /portfolios
   # POST /portfolios.json
-  def create
-    portfolio = Portfolio.create(portfolio_params)
-    redirect_to portfolio
-  end
+    def create
+      portfolio = Portfolio.create(portfolio_params)
+      redirect_to portfolio
+    end
 
   # PATCH/PUT /portfolios/1
   # PATCH/PUT /portfolios/1.json
-  def update
-    @portfolio = Portfolio.find(params[:id])
-    @portfolio.update(portfolio_params)
-    redirect_to portfolio_path(@portfolio)
-  end
+    def update
+        respond_to do |format|
+        if @portfolio.update(portfolio_params)
+          format.html { redirect_to @portfolio, notice: 'Portfolio was successfully updated.' }
+          format.json { render :show, status: :ok, location: @portfolio }
+        else
+          format.html { render :edit }
+          format.json { render json: @portfolio.errors, status: :unprocessable_entity }
+        end
+      end
+    end
 
   # DELETE /portfolios/1
   # DELETE /portfolios/1.json
-  def destroy
-    @portfolio.destroy
-    respond_to do |format|
-      format.html { redirect_to portfolios_url, notice: 'Portfolio was successfully destroyed.' }
-      format.json { head :no_content }
+    def destroy
+      @portfolio.destroy
     end
-  end
 
   private
-  def set_portfolio
+    def set_portfolio
       @portfolio = Portfolio.find(params[:id])
     end
-    # Never trust parameters from the scary internet, only allow the white list through.
+  # Never trust parameters from the scary internet, only allow the white list through.
     def portfolio_params
       params.require(:portfolio).permit(:symbol, :sector, :high, :low, :price, :stock_id[], :user_id[])
     end
