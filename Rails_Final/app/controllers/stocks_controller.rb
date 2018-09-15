@@ -4,9 +4,8 @@ class StocksController < ApplicationController
     redirect_to stock_path(@stock)
   end
   def create
-    @stock = Stock.create(portfolio_params)
-    @stock.save
-    redirect_to portfolio_path(@stock)
+    @stock = Stock.create(stock_params)
+    redirect_to stock_path(@stock)
   end
   def new
     @stock = Stock.new
@@ -25,7 +24,7 @@ class StocksController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def portfolio_params
-      params.require(:stock).permit(:symbol, :sector, :high, :low, :price)
+    def stock_params
+      params.require(:stock).permit(:symbol, :sector, :high, :low, :price, stock_id:[], user_id:[])
     end
 end

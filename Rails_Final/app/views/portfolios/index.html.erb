@@ -21,7 +21,7 @@
           </tr>
       </thead>
       <tbody>
-        <% @portfolios.each do |portfolio| %>
+        <% @user.stocks.each do |portfolio| %>
           <tr>
             <td><%= portfolio.symbol %></td>
             <td><%= portfolio.sector %></td>

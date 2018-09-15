@@ -1,2 +1,46 @@
-<h1>Stocks#show</h1>
-<p>Find me in app/views/stocks/show.html.erb</p>
+<center>
+<body class="bg-dark">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <%= link_to 'Home', stocks_path %>
+      </li>
+      <li class="breadcrumb-item">
+        <%= link_to 'Edit', edit_stock_path(@stock) %>
+       </li>
+       <li class="breadcrumb-item active">Show</li>
+    </ol>
+
+    <div class="card card-login mx-auto mt-5">
+
+      <div class="card-header">Details</div>
+        <div class="card-body">
+
+        <div class="form-group">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th>Symbol</th>
+                        <th>Sector</th>
+                        <th>High</th>
+                        <th>Low</th>
+                        <th>Price</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><%=@stock.symbol%></td>
+                        <td><%=@stock.sector%></td>
+                        <td><%=@stock.high%></td>
+                        <td><%=@stock.low%></td>
+                        <td><%=@stock.price%></td>
+                      </tr>
+                    </tbody>
+                  </table>
+        </div>
+  </div>
+  </div>
+  </div>
+  </div>
+</body>
+</center>

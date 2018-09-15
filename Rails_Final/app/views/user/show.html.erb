@@ -1,2 +1,6 @@
-<h1>User#show</h1>
-<p>Find me in app/views/user/show.html.erb</p>
+<h1> <%=@user.username%></h1>
+<ul>
+  <%@user.portfolios.each do |post|%>
+  <%= link_to portfolio.title, portfolio_path(post)%>
+  <%end%>
+</ul>
