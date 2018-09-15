@@ -1,4 +1,8 @@
 class StocksController < ApplicationController
+  def index
+    @stock = Stock.all
+  end
+
   def update
     @stock.update(stock_params)
     redirect_to stock_path(@stock)

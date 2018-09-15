@@ -57,6 +57,9 @@ class PortfoliosController < ApplicationController
   end
 
   private
+  def set_portfolio
+      @portfolio = Portfolio.find(params[:id])
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def portfolio_params
       params.require(:portfolio).permit(:symbol, :sector, :high, :low, :price, :stock_id[], :user_id[])
