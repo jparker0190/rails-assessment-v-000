@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
   root 'home#index'
-  resources :portfolios
+  resources :portfolios, only: [:show, :index] do
+    resources :stocks, only: [:index, :new, :show]
+  end
   resources :stocks
+  resources :portfolios
   devise_for :users, controllers: {registrations: "registrations", :omniauth_callbacks => "users/omniauth_callbacks"}
 
   # The priority is based upon order of creation: first created -> highest priority.

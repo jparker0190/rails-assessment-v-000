@@ -41,7 +41,7 @@
                 </tbody>
               </table>
               <%= link_to 'Add Stocks', new_stock_path %>
-
+              <%= link_to 'Destroy', portfolio_path(@portfolio), method: :delete, data: { confirm: 'Are you sure?' } %>
            </div>
          </div>
        </div>

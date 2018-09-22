@@ -19,7 +19,7 @@ class StocksController < ApplicationController
 
 # GET /stocks/new
   def new
-    @stock = Stock.new
+    @stock = Stock.new(portfolio_id: params[:portfolio_id])
   end
 
 # GET /stocks/1/edit
