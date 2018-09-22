@@ -1,7 +1,7 @@
 <body class="bg-white">
   <h1>Current Portfolio's</h1>
   <%=link_to("portfolios", new_portfolio_path)%>
-  <%@portfolio.each do |portfolio|%>
+  <%@portfolios.each do |portfolio|%>
 
 
   <div class="container">
@@ -27,6 +27,7 @@
                 </thead>
                 <tbody>
                   <% current_user.stocks.each do |stock| %>
+                  <% a = Portfolio.find_by(:portfolio_ids => @portfolio.id, :stock_id => c.id) %>
                     <tr>
                       <td><%= stock.symbol %></td>
                       <td><%= stock.sector %></td>
@@ -40,8 +41,8 @@
                   <% end %>
                 </tbody>
               </table>
-              <%= link_to 'Add Stocks', new_stock_path %>
-              <%= link_to 'Destroy', portfolio_path(@portfolio), method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= link_to 'Add Stocks', new_portfolio_stock_path(portfolio) %>
+              <%= link_to 'Destroy', portfolio_path(portfolio), method: :delete, data: { confirm: 'Are you sure?' } %>
            </div>
          </div>
        </div>

@@ -13,13 +13,18 @@ class StocksController < ApplicationController
 # POST /stocks.json
 
   def create
-    @stock = current_user.stocks.create(stock_params)
-    redirect_to portfolios_path(@stock)
+    @stock = Stock.new(stock_params)
+
+    if @stock.save
+      redirect_to @stock
+    else
+      render :new
+    end
   end
 
 # GET /stocks/new
   def new
-    @stock = Stock.new(portfolio_id: params[:portfolio_id])
+    @stock = Stock.new
   end
 
 # GET /stocks/1/edit
@@ -50,6 +55,6 @@ class StocksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stock_params
-      params.require(:stock).permit(:symbol, :sector, :high, :low, :price)
+      params.require(:stock).permit(:symbol, :sector, :high, :low, :price, :portfolio_ids)
     end
 end

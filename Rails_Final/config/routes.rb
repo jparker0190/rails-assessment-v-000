@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
   root 'home#index'
-  resources :portfolios, only: [:show, :index] do
-    resources :stocks, only: [:index, :new, :show]
+  resources :portfolios do
+    resources :stocks, only: [:show, :edit, :new]
   end
   resources :stocks
   resources :portfolios
