@@ -1,3 +1,0 @@
-class PortfolioStocksController < ApplicationController
-
-end

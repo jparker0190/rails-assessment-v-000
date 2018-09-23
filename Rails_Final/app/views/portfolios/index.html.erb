@@ -27,7 +27,6 @@
                 </thead>
                 <tbody>
                   <% current_user.stocks.each do |stock| %>
-                  <% a = Portfolio.find_by(:portfolio_ids => @portfolio.id, :stock_id => c.id) %>
                     <tr>
                       <td><%= stock.symbol %></td>
                       <td><%= stock.sector %></td>

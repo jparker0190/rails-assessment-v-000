@@ -5,16 +5,7 @@ class PortfoliosController < ApplicationController
   # GET /portfolios
   # GET /portfolios.json
     def index
-      if params[:portfolio_id]
-        if !Port.find_by(id: params[:portfolio_id]).nil?
-          @portfolios = Portfolio.find(params[:portfolio_id]).stocks
-        else
-          flash[:alert] = "Artist not found"
-          redirect_to portfolios_path
-        end
-      else
         @portfolios = Portfolio.all
-      end
     end
 
   # GET /portfolios/1
