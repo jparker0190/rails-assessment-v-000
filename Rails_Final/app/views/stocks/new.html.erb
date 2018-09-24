@@ -7,7 +7,7 @@
         </li>
         <li class="breadcrumb-item active">Create</li>
       </ol>
-      <%= render 'form'%>
+      <%= render partial: "form", locals: {stock: @stock, portfolio: @portfolio}%>
 
     </div>
   </div>

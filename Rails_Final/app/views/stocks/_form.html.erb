@@ -3,20 +3,19 @@
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Detailssss</div>
         <div class="card-body">
-          <%= form_for :portfolio do |f| %>
-            <% if @stock.errors.any? %>
+          <%= form_for(stock, url: portfolio_stocks_path(portfolio)) do |f| %>
+            <% if stock.errors.any? %>
               <div id="error_explanation">
-                <h2><%= pluralize(@stock.errors.count, "error") %> prohibited this portfolio from being saved:</h2>
+                <h2><%= pluralize(stock.errors.count, "error") %> prohibited this portfolio from being saved:</h2>
                 <ul>
-                  <% @stock.errors.full_messages.each do |message| %>
+                  <% stock.errors.full_messages.each do |message| %>
                     <li><%= message %></li>
                   <% end %>
                 </ul>
               </div>
             <% end %>
-              <div class="form-group">
-                <%= f.hidden_field :portfolio_ids%>
-              </div>
+
+
               <div class="form-group">
                 <%= f.text_field :symbol, autofocus: true, class: 'form-control', placeholder: "Enter a ticker" %>
               </div>

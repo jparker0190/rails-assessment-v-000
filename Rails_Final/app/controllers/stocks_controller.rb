@@ -1,6 +1,6 @@
 class StocksController < ApplicationController
   before_action :authenticate_user!
-   before_action :set_stock, only: [:show, :edit, :update, :destroy]
+  before_action :set_stock, only: [:show, :edit, :update, :destroy]
 
  # PATCH/PUT /stocks/1
  # PATCH/PUT /stocks/1.json
@@ -13,14 +13,14 @@ class StocksController < ApplicationController
  # POST /stocks.json
 
    def create
-     portfolio = Portfolio.find(params[:portfolio_id])
-     @stock = portfolio.stocks.create(stock_params)
+     portfolio = Portfolio.find(params[:id])
+     @stock = portfolio.stock.create(stock_params)
    end
 
  # GET /stocks/new
    def new
-     portfolio = Portfolio.find(params[:portfolio_id])
-     @stock = portfolio.build_stock
+     @portfolio = Portfolio.find(params[:id])
+    @stock = Stock.new
    end
 
  # GET /stocks/1/edit
@@ -51,6 +51,7 @@ class StocksController < ApplicationController
 
      # Never trust parameters from the scary internet, only allow the white list through.
      def stock_params
-       params.require(:stock).permit(:symbol, :sector, :high, :low, :price, :portfolio_id)
+       params.require(:stock).permit(:symbol, :sector, :high, :low, :price)
      end
+
 end
