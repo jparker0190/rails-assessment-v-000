@@ -13,14 +13,14 @@ class StocksController < ApplicationController
  # POST /stocks.json
 
    def create
-     portfolio = Portfolio.find(params[:id])
-     @stock = portfolio.stock.create(stock_params)
+     portfolio = Portfolio.find(params[:stock][:portfolio_id])
+     @stock = portfolio.stocks.create(stock_params)
    end
 
  # GET /stocks/new
    def new
-    @portfolio = Portfolio.find(params[:id]
-    @stock = Stock.new
+     @portfolio = Portfolio.find(params[:portfolio_id])
+     @stock = Stock.new
    end
 
  # GET /stocks/1/edit
