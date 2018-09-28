@@ -14,8 +14,10 @@
 ActiveRecord::Schema.define(version: 20180928021618) do
 
   create_table "portfolio_stocks", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "stock_id"
+    t.integer  "portfolio_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "portfolios", force: :cascade do |t|
@@ -25,15 +27,13 @@ ActiveRecord::Schema.define(version: 20180928021618) do
   end
 
   create_table "stocks", force: :cascade do |t|
-    t.integer  "portfolio_id"
-    t.integer  "user_id"
     t.text     "symbol"
     t.text     "sector"
     t.integer  "high"
     t.integer  "low"
     t.integer  "price"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
