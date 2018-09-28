@@ -5,20 +5,7 @@ class PortfoliosController < ApplicationController
   # GET /portfolios
   # GET /portfolios.json
     def index
-
-        @portfolios = Portfolio.all
-
-      if params[:stock_id]
-        if !Stock.find_by(id: params[:stock_id]).nil?
-          @stock = Stock.find(params[:stock_id]).songs
-        else
-
-          redirect_to stocks_path
-        end
-      else
-        @portfolio = Portfolio.all
-      end
-
+      @portfolios = Portfolio.all
     end
 
   # GET /portfolios/1

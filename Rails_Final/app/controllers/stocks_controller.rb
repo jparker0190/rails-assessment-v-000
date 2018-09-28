@@ -19,7 +19,7 @@ class StocksController < ApplicationController
 
  # GET /stocks/new
    def new
-     @portfolio = Portfolio.find(params[:id])
+    @portfolio = Portfolio.find(params[:id]
     @stock = Stock.new
    end
 
