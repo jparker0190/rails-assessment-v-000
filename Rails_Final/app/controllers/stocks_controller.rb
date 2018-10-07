@@ -13,8 +13,9 @@ class StocksController < ApplicationController
  # POST /stocks.json
 
    def create
-     portfolio = Portfolio.find(params[:stock][:portfolio_id])
+     portfolio = Portfolio.find(params[:portfolio_id])
      @stock = portfolio.stocks.create(stock_params)
+     redirect_to portfolio_stock
    end
 
  # GET /stocks/new
